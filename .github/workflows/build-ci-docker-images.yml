@@ -18,6 +18,9 @@ concurrency:
   group: ${{ github.workflow }}
   cancel-in-progress: true
 
+env:
+  HEAD_COMMIT_MESSAGE: ${{ contains(github.event.head_commit.message, '[build-ci-image]') }}
+
 jobs:
   build:
     runs-on: ubuntu-22.04
